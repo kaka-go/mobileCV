@@ -1,0 +1,442 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>RSS_Reader by Ninjai</title>
+	
+	<meta charset="utf-8" http-equiv="Content-type" name="viewport" content="width=device-width, initial-scale=1"/> <!--content="width=device-width, initial-scale=1">-->
+	<link id="cssLink" rel="stylesheet" href="css/themes/default/theme-whiteblack.min.css"/>
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile.structure-1.1.0.min.css" />
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.mobile-1.1.0.min.js"></script>
+	<script src="js/cordova-2.0.0.js"></script> <!--<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>-->
+	<script src="jfeed.js"></script>
+	<script src="model.js"></script>
+	<script src="control.js"></script>
+	<script src="database.js"></script>
+	<script src="function.js"></script>
+	<script src="file.js"></script>
+	<link rel="stylesheet" href="basic.css" media="screen"/>	
+	
+	<!--<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=4083356649" type="text/javascript" charset="utf-8"></script>-->
+	
+	<script type="text/javascript">
+		document.addEventListener("deviceready", onDeviceReady, false);// indexLoader? we need a real init function.
+	</script>
+	
+</head>
+
+<body>
+
+<div data-role="page" id="indexpage"> 
+  <div data-role="header" class="header_bar"> 
+	<div class="rss_icon">
+		<table><tr>
+			<td><img id="weather_icon" src="img/icon_rss.png" /></td>
+			<td id="weather_detail"></td>
+		</tr></table>
+	</div>
+    <h1>Ninjai RSS</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul id="index_list" data-role="listview" data-inset="true">
+        <li data-role="list-divider">已订阅的项目</li> <!-- TODO -->
+        <li> <a href="#overviewpage" onclick="loadOverviewPage('头条新闻', 'http://news.163.com/special/00011K6L/rss_newstop.xml');">头条新闻 ...</a> </li> <!-- TODO <span class="ui-li-count">4</span> -->
+		<!-- <li> <a href="#overviewpage" onclick="loadOverviewPage('Engadget', 'http://cn.engadget.com/rss.xml');">Engadget ...</a> </li> -->
+		<!-- <li> <a href="#overviewpage?id=102">Solidot ...</a> </li>  -->
+      </ul>
+    </div>
+  </div>
+  <!-- /content -->
+  <div id="option_bar" data-role="navbar" data-position="fixed"> <!-- data-position="fixed"-->
+	<ul>
+		<li><a href="#feedpage" onclick="loadCategory();"> <img src="img/rss.png" class="rss"/>订阅</a></li>
+		<li><a href="#favorpage" onclick="loadFavorPage();"> <img src="img/favor.png"/>收藏</a></li>
+		<li><a href="#optionpage" onclick=";"> <img src="img/option.png"/>设置</a></li>
+		<!-- <li><a href="#test" ><img src="img/option.png"/>测试</a></li> -->
+	</ul>
+  </div>
+</div>
+<!-- /indexpage -->
+
+<div data-role="page" id="overviewpage">
+  <div data-role="header"> 
+    <h1 class="channel_title">头条新闻</h1> <!-- TODO -->
+	<a data-rel="back" data-icon="back">返回</a>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <ul id="channel_list" data-role="listview" data-split-icon="star" data-inset="true">
+ 	  <li>
+      	<img src='img/loading.gif'/><h3> 载入中...</h3></a>
+	  </li>
+      <!-- <li>
+        <a href="#newspage">
+			<h3>调查称超九成网民反对退休年龄延至65岁</h3>
+			<p>2012-07-03 09:34:13</p>
+			<a href="#" onclick="alert('favor');" />
+		</a>
+	  </li>
+      <li>
+		<a href="#newspage">
+			<h3>深圳交警涉嫌打人事件续：被打者遭刑拘</h3>
+			<p>2012-07-03 09:34:13</p>
+			<a href="#" onclick="alert('favor');" />
+		</a>
+	  </li>
+      <li>
+		<a href="#newspage">
+			<h3>中央党校博导：共产党没让中国人失望</h3>
+			<p>2012-07-03 09:34:13</p>
+			<a href="#TODO" onclick="alert('favor');" />
+		</a>
+      </li> -->
+    </ul>
+  </div>
+  <!-- /content -->
+  <div data-role="navbar" data-position="fixed"> 
+  	<ul>
+    	<li><a href="#" onclick="refreshFeedItems();"> <img src="img/refresh.png" class="refresh" /> 刷新</a></li>
+    	<li><a data-rel="back" onclick="alert('TODO unbook');" id="unbook"> <img src="img/trash.png" class="trash"/> 退订</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /overviewpage -->
+
+<div data-role="page" id="newspage">
+  <div data-role="header">
+    <!--<img src="img/icon_rss.png" class="rss_icon"/>-->
+	<a data-rel="back" data-icon="back">返回</a>
+	<h1 class="channel_title">头条新闻</h1> <!-- TODO -->
+	<a id="news_favor" href="#" data-icon="star" onclick="favorNews();">收藏</a>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <h3 id="news_title"> 请求出错了，请检查网络或SD卡是否正常 </h3>
+	<li id="news_time"> </li>
+	<!-- <img src="img/default.png" /> <!-- TODO -->
+	<div>
+	<div id="news_desc"> 暂无阅读内容 </div> <!-- 商报图形 王若静 制7月1日，积极应对人口老龄化战略研讨会在京召开，人力资源和社会保障部社会保障研究所所长何平提出，我国从2016年实行延长退休年龄的政策，并每两年延长1岁退休年龄。到2045年不论男女，退休年龄均为65岁。事实上，就在今年6月上旬，人社部在回答网友提问时表示，推迟退休年龄已是一种必然趋势，将适时提 ……  -->
+		<ul data-role="listview" data-inset="true">
+		  <li id="read_more" ><a id="news_url" href="#TODO">继续阅读...</a><li>
+		  <li ><a id="news_page" href="#">原文页面...</a><li>
+		</ul>
+	</div>
+  </div>
+  <!-- /content -->
+  <div data-role="footer" data-position="fixed"> 
+	<!-- sina weibo -->	
+	<div id="share">
+		<!-- <script> weibo( "http://weibo.com", "调查称超九成网民反对退休年龄延至65岁"); </script> -->
+	</div> 
+  </div>
+</div>
+<!-- /detailpage -->
+
+<div data-role="page" id="categorypage">
+  <div data-role="header" class="header_bar">
+	<a data-rel="back" data-icon="back">返回</a>
+    <h1>频道分类列表</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul id="category_list" data-role="listview" data-inset="true">
+        <li>
+			<a href="#channelpage">
+			<img src="img/next.png" class="ui-li-icon"/>
+			新闻 ...
+			</a>            
+        </li>
+		<li>
+			<a href="#channelpage">
+			<img src="img/next.png" class="ui-li-icon"/>
+			科技 ...
+			</a>            
+        </li>
+        <li>
+			<a href="#channelpage">
+			<img src="img/next.png" class="ui-li-icon"/>
+			奥运 ...
+			</a>            
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /content -->
+</div>
+<!-- /categorypage -->
+
+<div data-role="page" id="channelpage">
+  <div data-role="header" class="header_bar">
+	<a data-rel="back" data-icon="back">返回</a>
+    <h1 id="channel_name">新闻 频道</h1> <!-- TODO -->
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul id="channel_list" data-role="listview" data-inset="true">
+        <li data-role="list-divider"></li>
+        <li>
+			<a>
+			<img src="img/darkstar.png" class="ui-li-icon"/>
+			<span>头条新闻</span>
+			</a>
+        </li>
+		<li>
+			<a>
+			<img src="img/darkstar.png" class="ui-li-icon"/>
+			<span>国内新闻</span>
+			</a>
+        </li>
+        <li>
+			<a>
+			<img src="img/darkstar.png" class="ui-li-icon"/>
+			<span>国际新闻</span>
+			</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- /content -->
+</div>
+<!-- /channelpage -->
+
+<div data-role="page" id="feedpage">
+  <div data-role="header" class="header_bar">
+	<a data-rel="back" data-icon="back">返回</a>
+    <h1>推荐频道</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul id="feed_list" data-role="listview" data-inset="true">
+        <li>
+			<a href="http://www.163.com/rss/">	<!-- TODO #categorypage -->
+			<img src="img/163.png" class="ui-li-icon"/>
+			网易 RSS
+			</a>            
+        </li>
+		<li>
+			<a data-rel="back" onclick="recommandFeed('http://news.sohu.com/rss/pfocus.xml');">
+			<img src="img/sohu.png" class="ui-li-icon"/>
+			搜狐 RSS
+			</a>            
+        </li>
+        <li>
+			<a href="#">
+				<img src="img/engadget.png" class="ui-li-icon"/>
+				Engadget
+				<a data-rel="back" onclick="recommandFeed('http://cn.engadget.com/rss.xml');" data-icon="add"/>
+			</a>
+        </li>
+        <li>
+			<a href="#">
+				<img src="img/westweekend.png" class="ui-li-icon"/>
+				南方周末
+				<a data-rel="back" onclick="recommandFeed('http://www.infzm.com/rss/home/rss2.0.xml');" data-icon="add"/>
+			</a>
+        </li>
+        <li>
+			<a href="#">
+				<img src="img/sina.png" class="ui-li-icon"/>
+				电影世界
+				<a data-rel="back" onclick="recommandFeed('http://blog.sina.com.cn/rss/dianyingshijie.xml');" data-icon="add"/>
+			</a>
+        </li>
+        <li>
+			<a href="#">
+				<img src="img/songshuhui.png" class="ui-li-icon"/>
+				 科学松鼠会
+				<a data-rel="back" onclick="recommandFeed('http://songshuhui.net/feed');" data-icon="add"/>
+			</a>
+        </li>
+       	<li>
+			<a href="#">
+				<img src="img/english.png" class="ui-li-icon"/>
+				 每日英语
+				<a data-rel="back" onclick="recommandFeed('http://english-feed.beanwoo.com/');" data-icon="add"/>
+			</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+  <!-- /content -->
+  <div data-role="navbar" data-position="fixed">
+  	<ul> 
+    	<li><a href="#addfeedpage" onclick=""> <img src="img/bookmark.png"/> 手动添加 RSS源 </a>	 <!-- TODO --></li>
+    </ul>
+  </div>
+</div>
+<!-- /feedpage -->
+
+<div data-role="page" id="addfeedpage">
+  <!--<div data-role="header" class="header_bar">
+	<a data-rel="back" data-icon="back">返回</a>
+    <h1>添加RSS源</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul data-role="listview" data-inset="true">
+		<!-- <li data-role="fieldcontain">
+			<label for="feed_title">RSS 标题:</label>
+			<input type="text" name="feed_title" id="feed_title" value=""  />
+		</li> -->
+		<li data-role="fieldcontain">
+			<label for="feed_url">RSS 地址:</label>
+			<input type="text" name="feed_url" id="feed_url" value="http://"  />
+		</li>
+		<li class="ui-body ui-body-b">
+			<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><a data-rel="back" data-role="button">取消</a></div>
+					<div class="ui-block-b"><a data-rel="back" data-role="button" onclick="addFeed();">添加源</a></div> <!-- TODO -->
+			</fieldset>
+		</li>
+	  </ul>
+    </div>
+  </div>
+  <!-- /content -->
+</div>
+<!-- /addfeedpage -->
+
+<div data-role="page" id="favorpage">
+  <div data-role="header" class="header_bar">
+	<a data-rel="back" data-icon="back">返回</a>
+    <h1>我的收藏</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul id="favor_list" data-role="listview" data-inset="true"> <!-- TODO -->
+      	<li>
+			<a href="#">
+				<h3>暂无收藏</h3>
+				<p> </p>
+				<a href="#" onclick=";" data-icon="delete" />
+			</a>
+        </li>
+        <!-- <li data-role="list-divider"></li>
+        <li>
+			<a href="#newspage">
+				<h3>中国向巴基斯坦海军交付首艘F-22P护卫舰</h3>
+				<p>Fri, 31 Jul 2009 09:30:21</p>
+				<a href="#" onclick="alert('favor');" data-icon="delete" />
+			</a>
+        </li>
+        <li>
+			<a href="#newspage">
+				<h3>中国科学家从成年老鼠皮肤细胞中克隆出小老鼠</h3>
+				<p>Fri, 24 Jul 2009 09:45:27</p>
+				<a href="#" onclick="alert('favor');" data-icon="delete" />
+			</a>
+        </li>
+		<li>
+			<a href="#newspage">
+				<h3>深圳交警涉嫌打人事件续：被打者遭刑拘</h3>
+				<p>2012-07-03 09:34:13</p>
+				<a href="#" onclick="alert('favor');" data-icon="delete" />
+			</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+  <!-- /content -->
+</div>
+<!-- /favorpage -->
+
+<div data-role="page" id="optionpage">
+  <div data-role="header" class="header_bar" data-position="fixed">
+	<a data-rel="back" data-icon="back">返回</a>
+    <h1>设置</h1>
+  </div>
+  <!-- /header -->
+  <div data-role="content">
+    <div>
+      <ul id="option_list" data-role="listview" data-inset="true">
+        <li data-role="fieldcontain">
+			<label for="load_pic">加载图片</label>
+			<select name="load_pic" id="load_pic" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on" selected>On</option>
+			</select>
+        </li>
+		<li data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>清空缓存</legend>
+				<input type="button" name="clean_cache" id="clean_cache" value="清空" onclick="clearCache();" />
+			</fieldset>
+        </li>
+		<li data-role="fieldcontain">
+			<label for="http_proxy">HTTP 代理</label>
+			<input type="text" name="http_proxy" id="http_proxy" value="http://" />
+			<label for="port">端口</label>
+			<input type="text" name="port" id="port" value="80" />
+			<label for="use_proxy">开启代理</label>
+			<select name="use_proxy" id="use_proxy" data-role="slider">
+				<option value="off">Off</option>
+				<option value="on">On</option>
+			</select>
+        </li>
+		<li data-role="fieldcontain">
+			<label for="city">所在城市</label>
+			<input type="text" name="city" id="city" value="Beijing" />
+			<input type="button" id="refresh_weather" value="刷新天气" onclick="refreshWeather();"/>
+        </li>
+		<li data-role="fieldcontain">
+			 <fieldset data-role="controlgroup">
+				<legend>更换皮肤</legend>
+					<input type="radio" name="radio-choice-1" id="radio-choice-1" value="default" checked="checked"/>
+					<label for="radio-choice-1">Default</label>
+
+					<input type="radio" name="radio-choice-1" id="radio-choice-2" value="bluewhite" />
+					<label for="radio-choice-2">Blue White</label>
+
+					<input type="radio" name="radio-choice-1" id="radio-choice-3" value="whiteblack" />
+					<label for="radio-choice-3">Night Mode</label>
+
+					<input type="radio" name="radio-choice-1" id="radio-choice-4" value="whiteyellow" />
+					<label for="radio-choice-4">Sunshine</label>
+			</fieldset>
+		</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /content -->
+  <div data-role="footer" data-position="fixed"> 
+    <a href="#" data-icon="alert" onclick="defaultConfig();">默认设置</a>
+  </div>
+</div>
+<!-- /optiionpage -->
+
+
+<div data-role="dialog" id="FailPage">
+  <div data-role="content">
+    <div>
+      <ul data-role="listview" data-inset="true">
+		<li data-role="fieldcontain">
+			<label for="feed_url">获取RSS源失败&gt_&lt</label>
+		</li>
+		<li class="ui-body ui-body-b">
+			<fieldset class="ui-grid-a">
+					<div class="ui-block-a"><a data-rel="back" data-role="button">返回</a></div>
+			</fieldset>
+		</li>
+	  </ul>
+    </div>
+  </div>
+  <!-- /content -->
+</div>
+<!-- /FailPage -->
+
+<div data-role="page" id="test">
+	<div data-role="content" id="test_output">
+		file test
+	</div>
+	
+</div>
+
+</body>
+</html>
