@@ -2,11 +2,11 @@
 <html>
 <head>
 	<title>WU KEJIA</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/themes/jquery.mobile-1.2.1.min.css"/>
-	<script src="js/jquery-1.8.3.min.js"></script>
-	<script src="js/jquery.mobile-1.2.1.min.js"></script>
+	<meta charset="utf-8" http-equiv="Content-type" name="viewport" content="width=device-width, initial-scale=1"/> 
+	<link id="cssLink" rel="stylesheet" href="css/themes/jquery.mobile.theme-1.1.0.min.css"/>
+	<link rel="stylesheet" href="css/themes/jquery.mobile.structure-1.1.0.min.css" media="screen"/>
+	<script src="js/jquery-1.7.1.min.js"></script>
+	<script src="js/jquery.mobile-1.1.0.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +17,15 @@
   </div>
   <!-- /header -->
   <div data-role="content">
+   <a href="#popupBasic" data-rel="popup">Open Popup</a>
+   <div data-role="popup" id="popupBasic">
+   	<p>This is a completely basic popup, no options set.<p>
+	</div>
 
+				<a href="#popbuaa" data-rel="popup" data-role="button" data-inline="true" data-transition="pop">more...</a>
+				<div data-role="popup" id="popbuaa">
+				<p> buaa pop info. </p>
+				</div>
 	<div data-role="collapsible-set" data-theme="b" data-content-theme="d">
 	
 		<div data-role="collapsible" data-collapsed="false">
@@ -25,10 +33,13 @@
 			<ul data-role="listview" data-theme="d" data-divider-theme="d">
 				<li data-role="list-divider"> 2009.9 — 2013.6 </li>
 				<li>
+				<a href="#popbuaa" data-rel="popup" data-role="button" data-inline="true" data-transition="pop">more...</a>
+				<div data-role="popup" id="popbuaa">
+				<p> buaa pop info. </p>
+				</div>
 					<h3>Beihang University</h3>
 					<p>Computer Science and Technology</p>
 					<p><strong>Bachelor</strong></p>
-				</a>
 				</li>
 				<li data-role="list-divider"> 2012.12 — 2013.4 </li>
 				<li>
@@ -43,30 +54,17 @@
 			<h2>Internship Experience</h2>
 			<ul data-role="listview" data-theme="d" data-divider-theme="d">
 				<li data-role="list-divider"> 2012.7 – 2012.10 </li>
-				<li><a href="#popMS" data-rel="popup" data-transition="pop" data-inline="true">
-					<h3>MSRA STC<br />(Microsoft Research Asia <br />Search Technology Center)</h3>
+				<li><a href="http://www.bingiton.com" target="_blank" >
+					<h3>MSRA (Microsoft Research Asia) STC</h3>
+					<p>Implement Web Analytics Tools on 'Bing It On' website, and fix some bugs</p>
 					<p><strong>SDET Intern</strong></p>
-				</a>
-				<div data-role="popup" id="popMS" class="ui-content" data-overlay-theme="a" data-theme="e"> 
-				<a href="#englishpage" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
-				Implemented Web Analytics Tools on <strong>"Bing It On"</strong> website, and fix bugs.
-				<img src="img/bingiton.png" />
-				<a href="http://www.bingiton.com" data-role="button">Visit BING IT ON</a>
-				</div>
-				</li>
-
+				</a></li>
 				<li data-role="list-divider"> 2011.4 – 2012.3 </li>
-				<li><a href="#popApps" data-rel="popup" data-transition="pop" data-inline="true">  <!-- TODO -->
+				<li><a href="#applist">  <!-- TODO -->
 					<h3>Kungang Creative Studio</h3>
-					<p><strong>Android App Developer (Part-time)</strong></p>
-				</a>
-				<div data-role="popup" id="popApps" class="ui-content" data-overlay-theme="a" data-theme="e"> 
-				<a href="#englishpage" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
-				Developed Apps: Audio books, Music searcher, One-arm-bandit, Best scorer and etc.
-				<img src="img/audiobooks.png" />
-				<a href="download/audiobook.apk" data-role="button">Download Audio books</a>
-				</div>
-				</li>
+					<p>Developed Apps: Audio books, Music searcher, One-arm-bandit, Best scorer and etc.</p>
+					<p><strong>Android App Developer</strong></p>
+				</a></li>
 			</ul>
 		</div>
 		
@@ -112,13 +110,7 @@
 
 	</div>
 	
-	<a href="#popPhoto" data-rel="popup" data-position-to="window" data-transition="fade">
 	<img src="img/photo.jpg" width="100%"/>	
-	</a>
-	<div data-role="popup" id="popPhoto" data-overlay-theme="a" data-corners="false">
-		<a href="#englishpage" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
-		<img src="img/popphoto.jpg" style="max-width:100%;"/>
-	</div>
 	
   </div>
   <!-- /content -->
