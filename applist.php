@@ -22,7 +22,7 @@ include "data.php";
     echo "<a href='index.php?lang=$lang_str' data-icon='bars' class='ui-btn-left'>";
     echo $cv[$lang]; 
     echo "</a>"; ?>
-    <h1><?=$title[$lang]?></h1>
+    <h1><?=$myapps[$lang]?></h1>
   </div>
   <!-- /header -->
   <div data-role="content">
@@ -30,7 +30,7 @@ include "data.php";
 <?php
 foreach ($applist as $i=>$app){
 	echo "<li><a href='".$app['url']."'>";
-	echo "<img src='".$app['src']."' >";
+	echo "<img src='".$app['icon']."' class='appicon' style='margin-top:8px; margin-left:8px;' />";
 	echo "<h2>".$app['name']."</h2>";
 	echo "<p>".$app['desc']."</p>";
 	echo "<p>".$app['size']."</p>";

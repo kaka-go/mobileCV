@@ -14,6 +14,7 @@
 
 <?php
 include "data.php";
+
 if(isset($_GET["name"]) && array_key_exists($_GET["name"], $applist)){
     $name = $_GET["name"];
     $app = $applist[$name];
@@ -30,30 +31,43 @@ else{
 <div data-role="page">
   <div data-role="header" class="header_bar"> 
     <?php 
-    echo "<a href='applist.php?lang=$lang_str' data-icon='bars' class='ui-btn-left'>";
-    echo $title[$lang]; 
-    echo "</a>"; 
-    
-    echo "<a href='index.php?lang=$lang_str' data-icon='bars' class='ui-btn-right'>";
+    echo "<a href='index.php?lang=$lang_str' data-icon='bars' class='ui-btn-left'>";
     echo $cv[$lang]; 
+    echo "</a>"; 
+    echo "<a href='applist.php?lang=$lang_str' data-icon='bars' class='ui-btn-right'>";
+    echo $myapps[$lang]; 
     echo "</a>"; 
     ?>
     <h1><?=$applist[$name]["name"]?></h1>
   </div>
   <!-- /header -->
   <div data-role="content">
-<ul data-role="listview" data-inset="true">
+
+    <div class="ui-grid-a" id="title">
+    <?php
+    echo "<div class='ui-block-a'><img src='".$app['icon']."'/></div>";
+    echo "<div class='ui-block-b'><h3>".$app['name']."</h3><p>".$app['desc']."</p></div>";
+    ?>
+    </div>
+
 <?php
-	echo "<li><a href='".$app['url']."'>";
-	echo "<img src='".$app['src']."' >";
-	echo "<h2>".$app['name']."</h2>";
-	echo "<p>".$app['desc']."</p>";
-	echo "<p>".$app['size']."</p>";
-	echo "</a></li>\n";
+    echo "<a href='".$app['url']."' data-role='button'>";
+    echo "$download[$lang] (".$app['size'].")";
+    echo "</a>\n";
+
+    foreach($app['snap'] as $i=>$snap){
+    	echo "<a href='#popSnap' data-rel='popup' data-position-to='window' data-transition='fade'>";
+        echo "<img src='$snap' class='snapshot' style='max-width:50%;' />";
+	echo "</a>";
+	echo "<div data-role='popup' id='popSnap' data-overlay-theme='a' data-corners='false'>";
+	echo "<a href='#' data-rel='back' data-role='button' data-theme='a' data-icon='delete' data-iconpos='notext' class='ui-btn-left'></a>";
+	echo "<img src='$snap' />"; 
+	echo "</div>";
+    }
 ?>
-</ul>
   </div>
   <!-- /content -->
+
   <div data-role="navbar" data-position="fixed">
 	<ul>		
 	<?php 
