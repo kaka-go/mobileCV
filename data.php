@@ -35,6 +35,7 @@ $rss_info = array("Developed Android and iOS app \"Ninjai RSS reader\" with Phon
 $gesture = array("Gesture Controllor","姿态运动识别及应用");
 $kinect = array("Kinect sensor project","Kinect 项目");
 $gesture_info = array("Participated in project \"Identification and application of 3D vision-based posture movements\". <br /> Mainly used the Kinect sensor to capture the motion sequence, and recognized the patterns from the sequence <br /><br />","参与项目“基于三维视觉的姿态运动识别及应用”，主要使用了Kinect摄像头捕获肢体的运动轨迹，并对运动序列进行模式识别<br /><br />");
+
 $metro = array("Metro Wordbook","Metro单词本");
 $win8_metro = array("Win8 Metro app","Win8 Metro 应用");
 $metro_info = array("Developed a Win8 Metro app \"Metro Wordbook\" <br />Participated in Imagine Cup 2012 Metro Style Challenge, and Windows 8 Campus Application Pioneer Project <br /><br />","参与制作Win8 Metro应用“Metro单词本” (Metro Wordbook) <br />参加Imagine Cup 2012-Metro Style Challenge，以及Windows 8校园应用先锋计划<br /><br />");
@@ -95,12 +96,14 @@ $AB = array("Audio Book","有声读物");
 $GS = array("Glasses Show","眼镜秀");
 $BE = array("Bullet Evader","躲弹者");
 $BSI = array("Beijing Subway inquiry in real time","北京地铁综合实时查询");
+$MW = array("Metro Wordbook","Metro单词本");
 
 $BE_desc = array("J2ME flight shooting game","J2ME飞行射击游戏");
 
 $applist = array(
 "BG"=>
 array("name"=>$BG[$lang], "desc"=>"Android", "size"=>"3.70 MB", "url"=>"app.php?name=BG&lang=$lang_str","icon"=>"img/beetle_go_icon.png",
+"download"=>"",
 "snap"=>array("img/beetle_go_1.jpg","img/beetle_go_2.jpg")),
 "NR"=>
 array("name"=>$NR[$lang], "desc"=>"Android/iOS app", "size"=>"502.91 KB", "url"=>"app.php?name=NR&lang=$lang_str","icon"=>"img/ninjai_rss_icon.png",
@@ -127,11 +130,14 @@ array("name"=>$AB[$lang], "desc"=>"Android", "size"=>"15.24 MB", "url"=>"app.php
 array("name"=>$GS[$lang], "desc"=>"Android", "size"=>"378.51 KB", "url"=>"app.php?name=GS&lang=$lang_str","icon"=>"img/glasses_show_icon.png",
 "snap"=>array("img/glasses_show_1.jpg","img/glasses_show_2.jpg")),
 "BE"=>
-array("name"=>$BE[$lang], "desc"=>$BE_desc[$lang], "size"=>"KB", "url"=>"app.php?name=BE&lang=$lang_str","icon"=>"img/bullet_evader_icon.png",
+array("name"=>$BE[$lang], "desc"=>$BE_desc[$lang], "size"=>"516 KB", "url"=>"app.php?name=BE&lang=$lang_str","icon"=>"img/bullet_evader_icon.png",
 "snap"=>array("img/bullet_evader_1.jpg","img/bullet_evader_2.jpg")),
 "BSI"=>
-array("name"=>$BSI[$lang], "desc"=>"Android", "size"=>"", "url"=>"app.php?name=BSI&lang=$lang_str","icon"=>"img/beijing_subway_icon.png",
+array("name"=>$BSI[$lang], "desc"=>"Android", "size"=>"3.20 MB", "url"=>"app.php?name=BSI&lang=$lang_str","icon"=>"img/beijing_subway_icon.png",
 "snap"=>array("img/beijing_subway_1.jpg","img/beijing_subway_2.jpg")),
+"MW"=>
+array("name"=>$MW[$lang], "desc"=>$win8_metro[$lang], "size"=>"...", "url"=>"app.php?name=MW&lang=$lang_str","icon"=>"img/metro_wordbook_icon.png",
+"snap"=>array("img/metro_wordbook_1.jpg","img/metro_wordbook_2.jpg")),
 );
 
 ?>

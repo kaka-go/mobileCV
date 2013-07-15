@@ -10,7 +10,7 @@ include "data.php";
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/themes/jquery.mobile-1.3.1.min.css"/>
-	<link rel="stylesheet" href="css/cv.css"/>
+<!--	<link rel="stylesheet" href="css/cv.css"/> -->
 	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/jquery.mobile-1.3.1.min.js"></script>
 </head>
@@ -76,8 +76,8 @@ include "data.php";
 	$kungang_apps = array("OAB","BS","IJ","TB","MS","AB");
 	foreach($kungang_apps as $i=>$app){
 	echo "<div class='ui-grid-a'>";
-	echo "<div class='ui-block-a'><img src='".$applist[$app]["icon"]."'/></div>";
-	echo "<div class='ui-block-b'><a href='".$applist[$app]["url"]."' data-role='button'>".$applist[$app]["name"]."</a></div>";
+	echo "<div class='ui-block-a' style='width:30%;' ><img src='".$applist[$app]["icon"]."'/></div>";
+	echo "<div class='ui-block-b' style='width:70%;' ><a href='".$applist[$app]["url"]."' data-role='button'>".$applist[$app]["name"]."</a></div>";
 	echo "</div>\n";
 	}
 
@@ -117,8 +117,8 @@ include "data.php";
 
 	<?php
 	echo "<div class='ui-grid-a'>";
-	echo "<div class='ui-block-a'><img src='".$applist["NR"]["icon"]."'/></div>";
-	echo "<div class='ui-block-b'><a href='".$applist["NR"]["url"]."' data-role='button'>".$applist["NR"]["name"]."</a></div>";
+	echo "<div class='ui-block-a' style='width:30%;' ><img src='".$applist["NR"]["icon"]."'/></div>";
+	echo "<div class='ui-block-b' style='width:70%;' ><a href='".$applist["NR"]["url"]."' data-role='button'>".$applist["NR"]["name"]."</a></div>";
 	echo "</div>\n";
 
 	echo "<a href='applist.php?lang=$lang_str' data-role='button' data-icon='bars'>";
@@ -136,20 +136,24 @@ include "data.php";
 				<div data-role="popup" id="popKinect" class="ui-content" data-overlay-theme="a" data-theme="e"> 
 				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
 				<?=$gesture_info[$lang]?>
-				<img src="img/kinect.jpg" />
+				<img src="img/kinect_1.jpg" />
+				<img src="img/kinect_2.jpg" />
 				</div>
 				</li>
 
 				<li data-role="list-divider"> 2012.4 – 2012.5 </li>
 				<li><a href="#popMetro" data-rel="popup" data-transition="pop" data-inline="true">
-					<h3><?=$metro[$lang]?></h3>
+					<h3><?=$MW[$lang]?></h3>
 					<p><?=$win8_metro[$lang]?></p>
 				</a>
 
 				<div data-role="popup" id="popMetro" class="ui-content" data-overlay-theme="a" data-theme="e"> 
 				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
 				<?=$metro_info[$lang]?>
-				<img src="img/metro_workbook.jpg" />
+				<img src="img/metro_wordbook_icon_wide.jpg" />
+		<?php
+echo     "<a href='".$applist["MW"]["url"]."' data-role='button'>".$applist["MW"]["name"]."</a>";
+		?>
 				</div>
 				</li>
 
@@ -165,8 +169,8 @@ include "data.php";
 
 		<?php
 echo "<div class='ui-grid-a'>";
-echo     "<div class='ui-block-a'><img src='".$applist["BSI"]["icon"]."' /></div>";
-echo     "<div class='ui-block-b'><a href='".$applist["BSI"]["url"]."' data-role='button'>".$applist["BSI"]["name"]."</a></div>";
+echo     "<div class='ui-block-a' style='width:30%;' ><img src='".$applist["BSI"]["icon"]."' /></div>";
+echo     "<div class='ui-block-b' style='width:70%;' ><a href='".$applist["BSI"]["url"]."' data-role='button'>".$applist["BSI"]["name"]."</a></div>";
 echo	"</div>";
 
 echo	"<a href='applist.php?lang=$lang_str' data-role='button' data-icon='bars'>";
@@ -187,8 +191,8 @@ echo    $view_apps[$lang]."</a>";
 
 		<?php
 echo "<div class='ui-grid-a'>";
-echo     "<div class='ui-block-a'><img src='".$applist["BE"]["icon"]."' /></div>";
-echo     "<div class='ui-block-b'><a href='".$applist["BE"]["url"]."' data-role='button'>".$applist["BE"]["name"]."</a></div>";
+echo     "<div class='ui-block-a' style='width:30%;' ><img src='".$applist["BE"]["icon"]."' /></div>";
+echo     "<div class='ui-block-b' style='width:70%;' ><a href='".$applist["BE"]["url"]."' data-role='button'>".$applist["BE"]["name"]."</a></div>";
 echo	"</div>";
 
 echo	"<a href='applist.php?lang=$lang_str' data-role='button' data-icon='bars'>";
@@ -206,7 +210,8 @@ echo    $view_apps[$lang]."</a>";
 				<div data-role="popup" id="popMagazine" class="ui-content" data-overlay-theme="a" data-theme="e"> 
 				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left"></a>
 				<?=$hacker_info[$lang]?>
-				<img src="img/hacker_monthly.jpg" />
+				<img src="img/hacker_monthly_en.jpg" />
+				<img src="img/hacker_monthly_1.jpg" />
 				<a href="http://.pdf" data-role="button" target="_blank"><?=$view_hacker[$lang]?></a>
 				</div>
 				</li>
@@ -229,8 +234,8 @@ echo    $view_apps[$lang]."</a>";
 
 		<?php
 echo "<div class='ui-grid-a'>";
-echo     "<div class='ui-block-a'><img src='".$applist["BG"]["icon"]."' /></div>";
-echo     "<div class='ui-block-b'><a href='".$applist["BG"]["url"]."' data-role='button'>".$applist["BG"]["name"]."</a></div>";
+echo     "<div class='ui-block-a' style='width:30%;' ><img src='".$applist["BG"]["icon"]."' /></div>";
+echo     "<div class='ui-block-b' style='width:70%;' ><a href='".$applist["BG"]["url"]."' data-role='button'>".$applist["BG"]["name"]."</a></div>";
 echo	"</div>";
 
 		?>
@@ -264,8 +269,8 @@ echo    $view_apps[$lang]."</a>";
 
 		<?php
 echo "<div class='ui-grid-a'>";
-echo     "<div class='ui-block-a'><img src='".$applist["GS"]["icon"]."' /></div>";
-echo     "<div class='ui-block-b'><a href='".$applist["GS"]["url"]."' data-role='button'>".$applist["GS"]["name"]."</a></div>";
+echo     "<div class='ui-block-a' style='width:30%;' ><img src='".$applist["GS"]["icon"]."' /></div>";
+echo     "<div class='ui-block-b' style='width:70%;' ><a href='".$applist["GS"]["url"]."' data-role='button'>".$applist["GS"]["name"]."</a></div>";
 echo	"</div>";
 
 echo	"<a href='applist.php?lang=$lang_str' data-role='button' data-icon='bars'>";
