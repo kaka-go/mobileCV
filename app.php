@@ -51,7 +51,7 @@ else{
     </div>
 
 <?php
-    echo "<a href='".$app['url']."' data-role='button'>";
+    echo "<a href='".$app['download']."' data-role='button'>";
     echo "$download[$lang] (".$app['size'].")";
     echo "</a>\n";
 

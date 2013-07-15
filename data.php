@@ -103,40 +103,51 @@ $BE_desc = array("J2ME flight shooting game","J2ME飞行射击游戏");
 $applist = array(
 "BG"=>
 array("name"=>$BG[$lang], "desc"=>"Android", "size"=>"3.70 MB", "url"=>"app.php?name=BG&lang=$lang_str","icon"=>"img/beetle_go_icon.png",
-"download"=>"",
+"download"=>"http://pan.baidu.com/share/link?shareid=3935371307&uk=2684639930",
 "snap"=>array("img/beetle_go_1.jpg","img/beetle_go_2.jpg")),
 "NR"=>
 array("name"=>$NR[$lang], "desc"=>"Android/iOS app", "size"=>"502.91 KB", "url"=>"app.php?name=NR&lang=$lang_str","icon"=>"img/ninjai_rss_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3949621664&uk=2684639930",
 "snap"=>array("img/ninjai_rss_1.jpg","img/ninjai_rss_2.jpg")),
 "BS"=>
 array("name"=>$BS[$lang], "desc"=>"Android", "size"=>"1.05 MB", "url"=>"app.php?name=BS&lang=$lang_str","icon"=>"img/best_scorer_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3952327235&uk=2684639930",
 "snap"=>array("img/best_scorer_1.jpg","img/best_scorer_2.jpg")),
 "IJ"=>
 array("name"=>$IJ[$lang], "desc"=>"Android", "size"=>"1.24 MB", "url"=>"app.php?name=IJ&lang=$lang_str","icon"=>"img/jump_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3954889054&uk=2684639930",
 "snap"=>array("img/jump_1.jpg","img/jump_2.jpg")),
 "OAB"=>
 array("name"=>$OAB[$lang], "desc"=>"Android", "size"=>"2.69 MB", "url"=>"app.php?name=OAB&lang=$lang_str","icon"=>"img/one_arm_bandit_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3965644886&uk=2684639930",
 "snap"=>array("img/one_arm_bandit_1.jpg","img/one_arm_bandit_2.jpg")),
 "TB"=>
 array("name"=>$TB[$lang], "desc"=>"Android", "size"=>"1.99 MB", "url"=>"app.php?name=TB&lang=$lang_str","icon"=>"img/turnbrand_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3968030921&uk=2684639930",
 "snap"=>array("img/turnbrand_1.jpg","img/turnbrand_2.jpg")),
 "MS"=>
-array("name"=>$MS[$lang], "desc"=>"Android", "size"=>"MB", "url"=>"app.php?name=MS&lang=$lang_str","icon"=>"img/music_searcher_icon.png",
+array("name"=>$MS[$lang], "desc"=>"Android", "size"=>"789.59 KB", "url"=>"app.php?name=MS&lang=$lang_str","icon"=>"img/music_searcher_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3983749590&uk=2684639930",
 "snap"=>array("img/music_searcher_1.jpg","img/music_searcher_2.jpg")),
 "AB"=>
 array("name"=>$AB[$lang], "desc"=>"Android", "size"=>"15.24 MB", "url"=>"app.php?name=AB&lang=$lang_str","icon"=>"img/audio_book_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3987217636&uk=2684639930",
 "snap"=>array("img/audio_book_1.jpg","img/audio_book_2.jpg")),
 "GS"=>
 array("name"=>$GS[$lang], "desc"=>"Android", "size"=>"378.51 KB", "url"=>"app.php?name=GS&lang=$lang_str","icon"=>"img/glasses_show_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3992113770&uk=2684639930",
 "snap"=>array("img/glasses_show_1.jpg","img/glasses_show_2.jpg")),
 "BE"=>
 array("name"=>$BE[$lang], "desc"=>$BE_desc[$lang], "size"=>"516 KB", "url"=>"app.php?name=BE&lang=$lang_str","icon"=>"img/bullet_evader_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3994231916&uk=2684639930",
 "snap"=>array("img/bullet_evader_1.jpg","img/bullet_evader_2.jpg")),
 "BSI"=>
 array("name"=>$BSI[$lang], "desc"=>"Android", "size"=>"3.20 MB", "url"=>"app.php?name=BSI&lang=$lang_str","icon"=>"img/beijing_subway_icon.png",
+"download"=>"http://pan.baidu.com/share/link?shareid=3997242186&uk=2684639930",
 "snap"=>array("img/beijing_subway_1.jpg","img/beijing_subway_2.jpg")),
 "MW"=>
 array("name"=>$MW[$lang], "desc"=>$win8_metro[$lang], "size"=>"...", "url"=>"app.php?name=MW&lang=$lang_str","icon"=>"img/metro_wordbook_icon.png",
+"download"=>"failed.php",
 "snap"=>array("img/metro_wordbook_1.jpg","img/metro_wordbook_2.jpg")),
 );
 
