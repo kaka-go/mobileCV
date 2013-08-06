@@ -2,7 +2,7 @@
 <html>
 
 <?php
-include "data.php";
+include_once "data.php";
 ?>
 
 <head>
@@ -21,6 +21,7 @@ include "data.php";
   <div data-role="header" class="header_bar"> 
     <h1><?=$wkj[$lang]?></h1>
     <?php
+    echo "<a href='".$pdf_url[$lang]."' data-icon='info' class='ui-btn-left' target='_blank'>PDF</a>";
     echo "<a href='applist.php?lang=".$lang_str."' data-icon='bars' class='ui-btn-right'>$myapps[$lang]</a>";
     ?>
   </div>

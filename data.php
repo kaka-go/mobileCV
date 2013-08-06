@@ -83,6 +83,7 @@ $cv = array("My CV","简历");
 $back = array("back","返回");
 $download = array("Download","下载");
 $wkj = array("WU KEJIA","吴可嘉");
+$pdf_url = array("./WuKejia_CV_2013.7_photo.pdf","./吴可嘉_简历_2013.7_photo.pdf");
 
 $BG = array("Beetle Go","Beetle Go");
 $NR = array("Ninjai RSS","Ninjai RSS");

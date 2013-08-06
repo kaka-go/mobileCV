@@ -1,1 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?><Module>  <ModulePrefs title="Ninja RSS"></ModulePrefs>  <Content view="mobile" type="url" href="http://edw.ap01.aws.af.cm/app.php" />  <Content view="touch" type="url" href="http://edw.ap01.aws.af.cm/touch.php" /></Module>
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Mobile CV" />
+  <Content view="mobile" type="url" href="http://edw.ap01.aws.af.cm/index.php" />
+  <Content view="touch" type="url" href="http://edw.ap01.aws.af.cm/index.php" />
+</Module>
